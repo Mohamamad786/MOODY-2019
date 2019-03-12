@@ -5,6 +5,7 @@ import TodoList from './TodoList';
 import TodoItem from './TodoItems';
 
 class App extends Component {
+inputElement = React.createRef()
  constructor() {
 	 super()
 	 this.state = {
@@ -30,6 +31,9 @@ handleInput = e => {
         currentItem: { text: '', key: '' },
       })
 	 }
+	 else {
+		 alert('Enter The Music Name Please');
+	 }
  }
  deleteItem = key => {
     const filteredItems = this.state.items.filter(item => {
@@ -39,6 +43,10 @@ handleInput = e => {
       items: filteredItems,
     })
   }
+ addmusic = e => {
+	 e.preventDefault();
+	 alert('working');
+ }
 	render() {
 		return (
 			<div className="App">

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './style.scss';
 
 class TodoList extends Component {
- /* componentDidUpdate() {
+componentDidUpdate() {
 	  this.props.inputElement.current.focus()
-  }  */ 
+  }  
 	render() {
 		return (
 		 <div className="todoListMain">
@@ -13,6 +13,10 @@ class TodoList extends Component {
 			  <input className="musicInput" placeholder="Music Name" ref={this.props.inputElement} value={this.props.currentItem.text} onChange={this.props.handleInput}/>
               <button className="submit" type="submit"> Add Music </button>			
  			</form>
+			<div>
+			 <input className="musicInput" placeholder="Trying My own Version" type="text" />
+			 <button className="submit" onClick={addMusic}"> Add button </button>		
+			</div>
 		  </div>
 		 </div>
 		);
