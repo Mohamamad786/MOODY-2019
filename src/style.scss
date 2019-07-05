@@ -20,3 +20,8 @@ div {
   @extend %input;
   margin-right:20px;
 }
+.close_btn {
+    max-width: 12px;
+    padding: 0px 10px;
+	cursor: pointer;
+}

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import TodoList from './TodoList';
-import TodoItem from './TodoItems';
+import Header from './Header';
+import Main from './Main';
 
+function addMusic() {
+	 alert('working');
+ }
 class App extends Component {
 inputElement = React.createRef()
  constructor() {
@@ -11,6 +14,7 @@ inputElement = React.createRef()
 	 this.state = {
 		 items: [],
 		 currentItem: {text:'', key:''},
+		 name: {text:'Mohammad'},
 	 }
  }
 handleInput = e => {
@@ -32,7 +36,7 @@ handleInput = e => {
       })
 	 }
 	 else {
-		 alert('Enter The Music Name Please');
+		 alert('Enter The Property Type Please');
 	 }
  }
  deleteItem = key => {
@@ -43,17 +47,27 @@ handleInput = e => {
       items: filteredItems,
     })
   }
- addmusic = e => {
-	 e.preventDefault();
+ addMusic() {
 	 alert('working');
  }
+changetext = e => {
+	const newName = e.target.value
+	if (newName != '') { 
+	this.setState({
+		name: {text:'Mohammad and ' + newName},
+	})
+	}
+   	else {
+	this.setState({
+		name: {text:'Mohammad'},
+	})
+	}
+}
 	render() {
 		return (
 			<div className="App">
-			 <h1>Creating Moody Music App</h1>
-			{/* importing TodoList Component */}
-		     <TodoList addItem={this.addItem} inputElement={this.inputElement} handleInput={this.handleInput} currentItem={this.state.currentItem}/>
-			 <TodoItem entries={this.state.items} deleteItem={this.deleteItem} />
+			 <Header />
+			 <Main />
 			</div>
 		);
 	}
