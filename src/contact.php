@@ -1,6 +1,7 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Credentials:true");
+header('Content-type: application/json');  
 $host = "localhost"; 
 $user = "root"; 
 $password = ""; 
@@ -21,7 +22,7 @@ if (!$con) {
 switch ($method) {
     case 'GET':
       $id = $_GET['id'];
-      $sql = "select * from property"; 
+      $sql = "select name, key from property"; 
       break;
     case 'POST':
       $name = $_POST["name"];
@@ -41,14 +42,14 @@ if (!$result) {
 }
 
 if ($method == 'GET') {
-
-    for ($i=0 ; $i<mysqli_num_rows($result) ; $i++) {
+   
+   for ($i=0 ; $i<mysqli_num_rows($result) ; $i++) {
       echo ($i>0?',':'').json_encode(mysqli_fetch_object($result));
     }
   } elseif ($method == 'POST') {
     echo json_encode($result);
   } else {
     echo mysqli_affected_rows($con);
-  }
+  } 
 
 $con->close();

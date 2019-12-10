@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header';
 import Main from './Main';
+import Footer from './Footer';
+
 
 function addMusic() {
 	 alert('working');
@@ -68,6 +70,7 @@ changetext = e => {
 			<div className="App">
 			 <Header />
 			 <Main />
+			<Footer />
 			</div>
 		);
 	}

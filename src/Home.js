@@ -2,9 +2,9 @@
 import React from 'react'
 
 const Home = () => (
- <div>
-   <h1>Welcome to the Kaitlin inventory Site</h1>	
- </div>
+ <div class="center">
+   <img src="https://www.mytuxedopark.com/wp-content/uploads/Tuxedo-Townhome-rendering.jpg" class="img_full" />
+	</div>
 )
 
 export default Home

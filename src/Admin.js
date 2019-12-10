@@ -14,6 +14,8 @@ inputElement = React.createRef()
 		 items: [],
 		 currentItem: {text:'', key:''},
 		 name: {text:'Mohammad'},
+		 strr: [],
+		 users: []
 	 }
  }
 handleInput = e => {
@@ -50,7 +52,6 @@ handleInput = e => {
         items: items,
         currentItem: { text: '', key: '' },
       })
-	 
 	 }
 	 else {
 		 alert('Enter The Property Type Please');
@@ -78,26 +79,98 @@ changetext = e => {
 	})
 	}
 }
+asyncFunc() {
+  // fetch data from a url endpoint
+	 const url = 'http://localhost/contact.php'
 
-  componentDidMount() {
+  axios.get(url).then(response => response.data)
+    .then((data) => {
+		console.log(data);
+    //  this.setState({ items: data })
+    //  console.log(this.state.items)
+		let property = JSON.parse(JSON.stringify(data));
+  		console.log(property[1].name);
+	      		var property2 = property[1].name;
+        const users = JSON.parse(JSON.stringify(data));
+		console.log('testing');
+  		console.log(users);
+          		console.log(users[2].name); 
+		                this.setState({ users });
+  })
+}
+ propertytext = e => {
 
-    const url = 'http://localhost/contact.php'
+ const url = 'http://localhost/contact.php'
+    axios.get(url).then(response => response.data)
+      .then((data) => {
+    //  this.setState({ items: data })
+    //  console.log(this.state.items)
+		let  property = JSON.parse(JSON.stringify(data));
+       //     property2 = (property[0].name);
+		var property2 = property[0].name;
+		//     strr.push('sadasdas');
+		 //  alert(this.strr);
+	     }) 
+	// alert(this.strr);
+	 //	 return this.strr
+
+ }
+   componentDidMount() {
+  
+ const url = 'http://localhost/contact.php'
     axios.get(url).then(response => response.data)
     .then((data) => {
-		alert('data');
-		console.log('working');
 		console.log(data);
-      this.setState({ items: data })
-      console.log(this.state.items)
-     })  
+    //  this.setState({ items: data })
+    //  console.log(this.state.items)
+		let property = JSON.parse(JSON.stringify(data));
+  		console.log(property[1].name);
+	      		var property2 = property[1].name;
+        const users = JSON.parse(JSON.stringify(data));
+		console.log('testing');
+  		console.log(users);
+          		console.log(users[2].name); 
+		                this.setState({ users });
+
+
+     })
+  
+  
+       
+  /*	 fetch("http://localhost/contact.php")
+      .then(res => res.text())
+      .then(
+        (result) => {
+            console.log(result);
+
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+
+        console.error(error);
+
+
+        }
+      ) */
   }
 	
 	render() {
+
 		return (
+			
 			<div>
 			 <h1>Creating Property</h1>
 		     <TodoList addItem={this.addItem} inputElement={this.inputElement} handleInput={this.handleInput} currentItem={this.state.currentItem} name={this.state.name} changetext={this.changetext}/>
 			 <TodoItem entries={this.state.items} deleteItem={this.deleteItem} />
+	
+              {
+                        this.state.users.map(
+                            user => <li>{user.name}</li>
+                        )
+                    }
+ 
 		    </div>
 		);
 	}
